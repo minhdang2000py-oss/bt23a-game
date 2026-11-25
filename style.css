@@ -1,0 +1,71 @@
+/* Đặt khung cho mọi phần tử tính cả padding và border vào kích thước */
+* { box-sizing: border-box; }
+
+/* Style chung cho trang: font, căn giữa chữ, nền (nền sẽ được JS đổi màu) */
+body {
+  margin: 0;
+  padding: 20px;
+  font-family: "Segoe UI", Arial, sans-serif;
+  text-align: center;
+  background: #eef1f5;
+  color: #1b2433;
+  transition: background 0.3s; /* đổi màu nền mượt trong 0.3 giây */
+}
+
+/* Thanh chứa các nút điều khiển: xếp hàng ngang, tự xuống dòng khi hẹp */
+.toolbar {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+/* Style cho nút bấm và ô chọn thời gian */
+button, select {
+  font: inherit;
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: 2px solid #2f5bff;
+  background: #2f5bff;
+  color: #fff;
+  cursor: pointer;
+}
+select { background: #fff; color: #1b2433; }
+
+/* Nút hoặc ô chọn bị khóa: mờ đi và hiện con trỏ cấm */
+button:disabled, select:disabled { opacity: 0.45; cursor: not-allowed; }
+
+/* Dòng hiển thị thời gian và điểm */
+.stats { font-size: 1.3rem; font-weight: 600; }
+
+/* Khu vực chơi: khung có viền, nút mục tiêu sẽ di chuyển bên trong */
+#gameArea {
+  position: relative;      /* làm mốc để nút mục tiêu định vị tuyệt đối */
+  width: 100%;
+  max-width: 700px;
+  height: 380px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.7);
+  border: 3px dashed #2f5bff;
+  border-radius: 12px;
+}
+
+/* Nút mục tiêu: hình tròn, vị trí do JS thay đổi (left/top) */
+#target {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: #ff5a5f;
+  border-color: #ff5a5f;
+  font-weight: 700;
+  padding: 0;
+}
+
+/* Khi hết giờ, khóa toàn bộ khu vực chơi (không nhận click) */
+#gameArea.locked { pointer-events: none; opacity: 0.5; }
+
+/* Dòng kết quả cuối game */
+#result { font-size: 1.6rem; font-weight: 700; color: #b3261e; }
